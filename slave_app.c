@@ -13,8 +13,43 @@
 
 #define SLAVE_FRAME_TIMEOUT_MS 100
 
+// Maps a logical relay ID received over UART to the actual relay GPIO.
+static int get_relay_gpio(uint8_t relay_id);
+
+// Maps a logical switch ID received over UART to the actual switch input GPIO.
+static int get_switch_gpio(uint8_t switch_id);
+
+// Maps a logical PWM ID received over UART to the actual PWM output GPIO.
 static int get_pwm_gpio(uint8_t pwm_id);
+
+// Sends a generic ACK response to the master for the specified command ID.
+static void send_ack(uint8_t id);
+
+// Sends a generic error response to the master with an application-level error code.
+static void send_error(uint8_t id, uint16_t error_code);
+
+// Checks whether an I2C device responds at the requested 7-bit address.
+static void handle_check_i2c_address(uint8_t address);
+
+// Reads one of the slave ADC channels and sends the result back to the master.
+static void handle_read_adc(uint8_t adc_id);
+
+// Sets a relay GPIO according to the value received from the master.
+static void handle_relay_write(uint8_t relay_id, uint16_t value);
+
+// Reads a switch GPIO and sends its logic state back to the master.
+static void handle_read_switch(uint8_t switch_id);
+
+// Configures a relay pin as a safe low-state digital output.
+static void setup_slave_relay_pin(uint pin);
+
+// Configures a switch pin as a digital input with a pull-down for deterministic tests.
+static void setup_slave_switch_pin(uint pin);
+
+// Configures a GPIO as a PWM output and starts it at 0% duty cycle.
 static void setup_slave_pwm_pin(uint pin);
+
+// Sets a slave PWM output to the requested duty cycle percentage.
 static void handle_pwm_write(uint8_t pwm_id, uint16_t duty_percent);
 
 static int get_relay_gpio(uint8_t relay_id)
@@ -63,6 +98,19 @@ static int get_switch_gpio(uint8_t switch_id)
     }
 }
 
+static int get_pwm_gpio(uint8_t pwm_id)
+{
+    switch (pwm_id)
+    {
+    case SLAVE_PWM1:
+        return PWM1_GPIO;
+    case SLAVE_PWM2:
+        return PWM2_GPIO;
+    default:
+        return -1;
+    }
+}
+
 static void send_ack(uint8_t id)
 {
     uart_protocol_send_frame(RSP_ACK, id, 0);
@@ -75,6 +123,7 @@ static void send_error(uint8_t id, uint16_t error_code)
 
 static void handle_check_i2c_address(uint8_t address)
 {
+    // A zero-length write is used as a lightweight presence probe.
     int result = i2c_write_blocking(i2c0, address, NULL, 0, false);
     bool online = result >= 0;
 
@@ -85,6 +134,7 @@ static void handle_check_i2c_address(uint8_t address)
 static void handle_read_adc(uint8_t adc_id)
 {
     uint16_t adc_value = 0;
+
     if (adc_id == 0)
     {
         adc_select_input(0);
@@ -158,6 +208,48 @@ static void setup_slave_switch_pin(uint pin)
     gpio_init(pin);
     gpio_set_dir(pin, GPIO_IN);
     gpio_pull_down(pin);
+}
+
+static void setup_slave_pwm_pin(uint pin)
+{
+    gpio_set_function(pin, GPIO_FUNC_PWM);
+
+    uint slice_num = pwm_gpio_to_slice_num(pin);
+    uint channel = pwm_gpio_to_channel(pin);
+
+    // The wrap value creates a simple 0..1000 duty scale.
+    // A value of 300 means 30%, 850 means 85%, etc.
+    pwm_set_wrap(slice_num, 1000);
+    pwm_set_chan_level(slice_num, channel, 0);
+    pwm_set_enabled(slice_num, true);
+}
+
+static void handle_pwm_write(uint8_t pwm_id, uint16_t duty_percent)
+{
+    int pwm_gpio = get_pwm_gpio(pwm_id);
+
+    if (pwm_gpio < 0)
+    {
+        printf("ERROR: Invalid PWM ID %u\r\n", pwm_id);
+        send_error(pwm_id, 4);
+        return;
+    }
+
+    if (duty_percent > 100)
+    {
+        printf("ERROR: Invalid PWM duty %u for PWM ID %u\r\n", duty_percent, pwm_id);
+        send_error(pwm_id, 5);
+        return;
+    }
+
+    uint slice_num = pwm_gpio_to_slice_num((uint)pwm_gpio);
+    uint channel = pwm_gpio_to_channel((uint)pwm_gpio);
+    uint16_t level = (uint16_t)((duty_percent * 1000u) / 100u);
+
+    pwm_set_chan_level(slice_num, channel, level);
+
+    printf("PWM ID %u on GPIO %d set to %u%%\r\n", pwm_id, pwm_gpio, duty_percent);
+    send_ack(pwm_id);
 }
 
 void slave_app_init(void)
@@ -237,6 +329,7 @@ void slave_app_task(void)
         printf("Command: READ ADC %u\r\n", frame.id);
         handle_read_adc(frame.id);
         break;
+
     case CMD_PWM_WRITE:
         printf("Command: PWM WRITE ID=%u DUTY=%u%%\r\n", frame.id, frame.value);
         handle_pwm_write(frame.id, frame.value);
@@ -249,7 +342,7 @@ void slave_app_task(void)
             frame.command == RSP_I2C_PRESENCE ||
             frame.command == RSP_ERROR)
         {
-            // printf("Ignoring response frame: 0x%02X\r\n", frame.command);
+            // Ignore response frames that may be seen because of the current UART echo behavior.
             break;
         }
 
@@ -257,57 +350,4 @@ void slave_app_task(void)
         send_error(frame.id, 0xFFFF);
         break;
     }
-}
-
-static int get_pwm_gpio(uint8_t pwm_id)
-{
-    switch (pwm_id)
-    {
-    case SLAVE_PWM1:
-        return PWM1_GPIO;
-    case SLAVE_PWM2:
-        return PWM2_GPIO;
-    default:
-        return -1;
-    }
-}
-
-static void setup_slave_pwm_pin(uint pin)
-{
-    gpio_set_function(pin, GPIO_FUNC_PWM);
-
-    uint slice_num = pwm_gpio_to_slice_num(pin);
-    uint channel = pwm_gpio_to_channel(pin);
-
-    pwm_set_wrap(slice_num, 1000);
-    pwm_set_chan_level(slice_num, channel, 0);
-    pwm_set_enabled(slice_num, true);
-}
-
-static void handle_pwm_write(uint8_t pwm_id, uint16_t duty_percent)
-{
-    int pwm_gpio = get_pwm_gpio(pwm_id);
-
-    if (pwm_gpio < 0)
-    {
-        printf("ERROR: Invalid PWM ID %u\r\n", pwm_id);
-        send_error(pwm_id, 4);
-        return;
-    }
-
-    if (duty_percent > 100)
-    {
-        printf("ERROR: Invalid PWM duty %u for PWM ID %u\r\n", duty_percent, pwm_id);
-        send_error(pwm_id, 5);
-        return;
-    }
-
-    uint slice_num = pwm_gpio_to_slice_num((uint)pwm_gpio);
-    uint channel = pwm_gpio_to_channel((uint)pwm_gpio);
-    uint16_t level = (uint16_t)((duty_percent * 1000u) / 100u);
-
-    pwm_set_chan_level(slice_num, channel, level);
-
-    printf("PWM ID %u on GPIO %d set to %u%%\r\n", pwm_id, pwm_gpio, duty_percent);
-    send_ack(pwm_id);
 }
