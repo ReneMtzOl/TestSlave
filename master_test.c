@@ -95,7 +95,8 @@ static bool wait_i2c_presence(uint8_t address, bool *online)
         if (response.command == CMD_RELAY_WRITE ||
             response.command == CMD_READ_SWITCH ||
             response.command == CMD_READ_ADC ||
-            response.command == CMD_CHECK_I2C_ADDR)
+            response.command == CMD_CHECK_I2C_ADDR ||
+            response.command == CMD_PWM_WRITE)
         {
             // printf("Ignoring echoed command 0x%02X\r\n", response.command);
             continue;

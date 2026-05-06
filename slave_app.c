@@ -13,6 +13,10 @@
 
 #define SLAVE_FRAME_TIMEOUT_MS 100
 
+static int get_pwm_gpio(uint8_t pwm_id);
+static void setup_slave_pwm_pin(uint pin);
+static void handle_pwm_write(uint8_t pwm_id, uint16_t duty_percent);
+
 static int get_relay_gpio(uint8_t relay_id)
 {
     switch (relay_id)
