@@ -25,6 +25,38 @@ static PIO pio_rx;
 static uint sm_rx;
 static uint offset_rx;
 
+bool uart_protocol_is_command_frame(uint8_t command)
+{
+    switch (command)
+    {
+    case CMD_RELAY_WRITE:
+    case CMD_READ_SWITCH:
+    case CMD_READ_ADC:
+    case CMD_CHECK_I2C_ADDR:
+    case CMD_PWM_WRITE:
+        return true;
+
+    default:
+        return false;
+    }
+}
+
+bool uart_protocol_is_response_frame(uint8_t command)
+{
+    switch (command)
+    {
+    case RSP_ACK:
+    case RSP_SWITCH_STATE:
+    case RSP_ADC_VALUE:
+    case RSP_I2C_PRESENCE:
+    case RSP_ERROR:
+        return true;
+
+    default:
+        return false;
+    }
+}
+
 static uint8_t calculate_crc(uint8_t command, uint8_t id, uint16_t value)
 {
     uint8_t value_low = (uint8_t)(value & 0xFF);
@@ -223,11 +255,8 @@ bool uart_protocol_receive_frame_timeout(
 
         if (sof != UART_FRAME_SOF)
         {
-            // printf("UART RX: discarded byte 0x%02X\r\n", sof);
             continue;
         }
-
-        // printf("UART RX: SOF detected\r\n");
 
         uint8_t command = 0;
         uint8_t id = 0;
