@@ -595,23 +595,36 @@ static bool run_adc_test(void)
         printf("ERROR: Failed to read ADC2\r\n");
         return false;
     }
-    if (adc0_value == 0)
+
+    if (adc0_value < SLAVE_ADC0_MIN_EXPECTED ||
+        adc0_value > SLAVE_ADC0_MAX_EXPECTED)
     {
-        printf("ERROR: ADC0 value is 0 (out of range)\r\n");
-        return false;
-    }
-    if (adc1_value == 0)
-    {
-        printf("ERROR: ADC1 value is 0 (out of range)\r\n");
+        printf("ERROR: ADC0 value %u out of expected range %u..%u\r\n",
+               adc0_value,
+               SLAVE_ADC0_MIN_EXPECTED,
+               SLAVE_ADC0_MAX_EXPECTED);
         return false;
     }
 
-    if (adc2_value == 0)
+    if (adc1_value < SLAVE_ADC1_MIN_EXPECTED ||
+        adc1_value > SLAVE_ADC1_MAX_EXPECTED)
     {
-        printf("ERROR: ADC2 value is 0 (out of range)\r\n");
+        printf("ERROR: ADC1 value %u out of expected range %u..%u\r\n",
+               adc1_value,
+               SLAVE_ADC1_MIN_EXPECTED,
+               SLAVE_ADC1_MAX_EXPECTED);
         return false;
     }
 
+    if (adc2_value < SLAVE_ADC2_MIN_EXPECTED ||
+        adc2_value > SLAVE_ADC2_MAX_EXPECTED)
+    {
+        printf("ERROR: ADC2 value %u out of expected range %u..%u\r\n",
+               adc2_value,
+               SLAVE_ADC2_MIN_EXPECTED,
+               SLAVE_ADC2_MAX_EXPECTED);
+        return false;
+    }
     printf("ADC test OK: ADC0=%u, ADC1=%u, ADC2=%u\r\n", adc0_value, adc1_value, adc2_value);
     return true;
 }
