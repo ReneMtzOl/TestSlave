@@ -25,6 +25,15 @@ typedef enum
 #define PWM2_ADC_MIN_PLACEHOLDER 1
 #define PWM2_ADC_MAX_PLACEHOLDER 4095
 
+// Expected slave ADC ranges for the generic ADC test.
+// A grounded ADC input should fail because its value is below the minimum.
+#define SLAVE_ADC0_MIN_EXPECTED 1
+#define SLAVE_ADC0_MAX_EXPECTED 4095
+#define SLAVE_ADC1_MIN_EXPECTED 1
+#define SLAVE_ADC1_MAX_EXPECTED 4095
+#define SLAVE_ADC2_MIN_EXPECTED 1
+#define SLAVE_ADC2_MAX_EXPECTED 4095
+
 // ------------------------------------------------------------
 // Slave logical pin IDs.
 // These IDs are sent through UART.
