@@ -6,8 +6,19 @@
 
 #define BLINK_DELAY_MS 500
 
+typedef enum
+{
+    MASTER_TEST_RESULT_OK = 0,
+    MASTER_TEST_RESULT_SWITCH_FAIL = 1,
+    MASTER_TEST_RESULT_RELAY_FAIL = 2,
+    MASTER_TEST_RESULT_I2C_FAIL = 3,
+    MASTER_TEST_RESULT_ADC_FAIL = 4,
+    MASTER_TEST_RESULT_PWM_ADC_FAIL = 5,
+} master_test_result_t;
+
 void master_tests_init(void);
 bool master_tests_run_all(void);
+master_test_result_t master_tests_run_all_with_result(void);
 bool run_switch_test(void);
 
 #endif
