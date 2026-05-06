@@ -616,26 +616,45 @@ static bool run_adc_test(void)
     return true;
 }
 
+master_test_result_t master_tests_run_all_with_result(void)
+{
+    if (!run_switch_test())
+    {
+        printf("FULL TEST FAILED: switch test\r\n");
+        return MASTER_TEST_RESULT_SWITCH_FAIL;
+    }
+
+    if (!run_relay_full_test())
+    {
+        printf("FULL TEST FAILED: relay test\r\n");
+        return MASTER_TEST_RESULT_RELAY_FAIL;
+    }
+
+    if (!run_i2c_presence_check())
+    {
+        printf("FULL TEST FAILED: I2C test\r\n");
+        return MASTER_TEST_RESULT_I2C_FAIL;
+    }
+
+    if (!run_adc_test())
+    {
+        printf("FULL TEST FAILED: ADC test\r\n");
+        return MASTER_TEST_RESULT_ADC_FAIL;
+    }
+
+    if (!run_pwm_adc_test())
+    {
+        printf("FULL TEST FAILED: PWM ADC test\r\n");
+        return MASTER_TEST_RESULT_PWM_ADC_FAIL;
+    }
+
+    printf("FULL TEST PASSED\r\n");
+    return MASTER_TEST_RESULT_OK;
+}
+
 bool master_tests_run_all(void)
 {
-    bool result = true;
-
-    result &= run_switch_test();
-    result &= run_relay_full_test();
-    result &= run_i2c_presence_check();
-    result &= run_adc_test();
-    result &= run_pwm_adc_test();
-    
-    if (result)
-    {
-        printf("FULL TEST PASSED\r\n");
-    }
-    else
-    {
-        printf("FULL TEST FAILED\r\n");
-    }
-
-    return result;
+    return master_tests_run_all_with_result() == MASTER_TEST_RESULT_OK;
 }
 
 static bool pwm_write(uint8_t pwm_id, uint8_t duty_percent)
