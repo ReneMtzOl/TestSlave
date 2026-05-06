@@ -26,6 +26,42 @@ typedef struct
     uint16_t value;
 } uart_frame_t;
 
+// Returns true when the byte represents a master-to-slave command frame.
+// This is used mainly to ignore local UART echo frames while waiting for responses.
+static inline bool uart_protocol_is_command_frame(uint8_t command)
+{
+    switch (command)
+    {
+    case CMD_RELAY_WRITE:
+    case CMD_READ_SWITCH:
+    case CMD_READ_ADC:
+    case CMD_CHECK_I2C_ADDR:
+    case CMD_PWM_WRITE:
+        return true;
+
+    default:
+        return false;
+    }
+}
+
+// Returns true when the byte represents a slave-to-master response frame.
+// This helps the slave ignore echoed response frames instead of treating them as unknown commands.
+static inline bool uart_protocol_is_response_frame(uint8_t command)
+{
+    switch (command)
+    {
+    case RSP_ACK:
+    case RSP_SWITCH_STATE:
+    case RSP_ADC_VALUE:
+    case RSP_I2C_PRESENCE:
+    case RSP_ERROR:
+        return true;
+
+    default:
+        return false;
+    }
+}
+
 void uart_protocol_init(void);
 
 void uart_protocol_flush_rx(void);
