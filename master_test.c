@@ -436,7 +436,7 @@ static bool test_relay(uint8_t relay_id)
     }
 
     printf("Testing relay %u ON/OFF\r\n", relay_id);
-    printf("  [Master] Pin state before ON: %d\r\n", gpio_get(pin));
+    printf("  [Master] Pin state before ON: %d [PIN=%d]\r\n", gpio_get(pin),pin);
 
     if (!relay_write(relay_id, true))
     {
