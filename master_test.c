@@ -8,6 +8,7 @@
 #define RESPONSE_TIMEOUT_MS 100
 #define RELAY_STEP_DELAY_MS 500
 #define SWITCH_SETTLING_TIME_MS 20
+#define RELAY_SETTLING_TIME_MS 100
 
 static bool pwm_write(uint8_t pwm_id, uint8_t duty_percent);
 static bool run_pwm_adc_test(void);
@@ -369,7 +370,7 @@ static void setup_master_input_pin(uint pin)
 {
     gpio_init(pin);
     gpio_set_dir(pin, GPIO_IN);
-    gpio_pull_down(pin); // Pull-down interno para evitar conflictos externos
+    gpio_pull_up(pin); // Pull-up interno para detectar desconexiones
 }
 
 void master_tests_init(void)
@@ -435,6 +436,7 @@ static bool test_relay(uint8_t relay_id)
     }
 
     printf("Testing relay %u ON/OFF\r\n", relay_id);
+    printf("  [Master] Pin state before ON: %d\r\n", gpio_get(pin));
 
     if (!relay_write(relay_id, true))
     {
@@ -442,10 +444,13 @@ static bool test_relay(uint8_t relay_id)
         return false;
     }
 
-    sleep_ms(SWITCH_SETTLING_TIME_MS);
+    sleep_ms(500);
+
+    int state_on = gpio_get(pin);
+    printf("  [Master] Pin state after ON: %d\r\n", state_on);
 
     // Lógica inversa: si el esclavo activa, el maestro lee 0
-    if (gpio_get(pin) != 0)
+    if (state_on != 0)
     {
         printf("ERROR: Relay %u turned ON but master read 1\r\n", relay_id);
         return false;
@@ -457,10 +462,13 @@ static bool test_relay(uint8_t relay_id)
         return false;
     }
 
-    sleep_ms(SWITCH_SETTLING_TIME_MS);
+    sleep_ms(500);
+
+    int state_off = gpio_get(pin);
+    printf("  [Master] Pin state after OFF: %d\r\n", state_off);
 
     // Lógica inversa: si el esclavo desactiva, el maestro lee 1
-    if (gpio_get(pin) != 1)
+    if (state_off != 1)
     {
         printf("ERROR: Relay %u turned OFF but master read 0\r\n", relay_id);
         return false;
@@ -475,13 +483,13 @@ static bool run_relay_full_test(void)
 {
     printf("Starting full relay test\r\n");
 
-    if (!test_relay(SLAVE_REL1))
-        return false;
-    if (!test_relay(SLAVE_REL2))
+    if (!test_relay(SLAVE_REL4))
         return false;
     if (!test_relay(SLAVE_REL3))
         return false;
-    if (!test_relay(SLAVE_REL4))
+    if (!test_relay(SLAVE_REL2))
+        return false;
+    if (!test_relay(SLAVE_REL1))
         return false;
 
     printf("Full relay test OK\r\n");

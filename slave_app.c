@@ -202,7 +202,7 @@ static void setup_slave_relay_pin(uint pin)
     gpio_init(pin);
     gpio_set_dir(pin, GPIO_OUT);
     gpio_disable_pulls(pin);
-    gpio_put(pin, 0);
+    gpio_put(pin, 0); // Estado inicial 0
 }
 
 static void setup_slave_switch_pin(uint pin)
