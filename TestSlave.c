@@ -6,7 +6,7 @@
 #include "board_defs.h"
 #include "reset_button.h"
 
-#define ISMASTER 0
+#define ISMASTER 1
 #define USER_BLINK_DELAY_MS 500
 #define ERROR_PATTERN_PAUSE_MS 1000
 
@@ -42,14 +42,13 @@ int main(void)
     stdio_init_all();
     reset_button_init();
 
-    sleep_ms(2000);
-
     if (ISMASTER)
     {
+        printf("Master tester configuring pins...\r\n");
+        master_tests_init();
+
         sleep_ms(3000);
         printf("Master tester started\r\n");
-
-        master_tests_init();
 
         master_test_result_t result = master_tests_run_all_with_result();
 
@@ -74,10 +73,11 @@ int main(void)
     }
     else
     {
-        sleep_ms(2000);
-        printf("Slave started\r\n");
-
+        printf("Slave configuring pins...\r\n");
         slave_app_init();
+
+        sleep_ms(1000);
+        printf("Slave started\r\n");
 
         while (true)
         {

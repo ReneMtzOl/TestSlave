@@ -50,6 +50,9 @@ pico_enable_stdio_usb(TestSlave 1)
 # Add the standard library to the build
 target_link_libraries(TestSlave  pico_stdlib hardware_pio hardware_i2c hardware_adc hardware_pwm)
 
+# Define RP2350B variant to enable GPIOs 30-47
+target_compile_definitions(TestSlave PRIVATE PICO_RP2350A=0)
+
 # Add the standard include files to the build
 target_include_directories(TestSlave PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
