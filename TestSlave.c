@@ -6,7 +6,7 @@
 #include "board_defs.h"
 #include "reset_button.h"
 
-#define ISMASTER 1
+#define ISMASTER 1  
 #define USER_BLINK_DELAY_MS 500
 #define ERROR_PATTERN_PAUSE_MS 1000
 

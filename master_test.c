@@ -369,7 +369,7 @@ static void setup_master_input_pin(uint pin)
 {
     gpio_init(pin);
     gpio_set_dir(pin, GPIO_IN);
-    gpio_disable_pulls(pin);
+    gpio_pull_down(pin); // Pull-down interno para evitar conflictos externos
 }
 
 void master_tests_init(void)
@@ -491,7 +491,9 @@ static bool run_relay_full_test(void)
 
 static bool run_i2c_presence_check(void)
 {
-    const uint8_t address = 0x50;
+    // La dirección I2C de 7 bits del CAP1298 es 0x28.
+    // 0x50 es su dirección de escritura a 8 bits, pero el SDK requiere 7 bits.
+    const uint8_t address = 0x28;
     bool online = false;
 
     printf("Requesting I2C address presence check for 0x%02X\r\n", address);
@@ -647,19 +649,16 @@ master_test_result_t master_tests_run_all_with_result(void)
         printf("FULL TEST FAILED: switch test\r\n");
         return MASTER_TEST_RESULT_SWITCH_FAIL;
     }
-/*
-if (!run_relay_full_test())
-{
-    printf("FULL TEST FAILED: relay test\r\n");
-    return MASTER_TEST_RESULT_RELAY_FAIL;
-}
-
+    if (!run_relay_full_test())
+    {
+        printf("FULL TEST FAILED: relay test\r\n");
+        return MASTER_TEST_RESULT_RELAY_FAIL;
+    }
 if (!run_i2c_presence_check())
 {
     printf("FULL TEST FAILED: I2C test\r\n");
     return MASTER_TEST_RESULT_I2C_FAIL;
 }
-*/
 
     if (!run_adc_test())
     {

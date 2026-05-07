@@ -126,7 +126,7 @@ static void handle_check_i2c_address(uint8_t address)
     // En el SDK de Raspberry Pi Pico, una escritura de 0 bytes puede retornar 0 sin generar tráfico.
     // La forma estándar y confiable de hacer un "probe" es intentar leer 1 byte.
     uint8_t rxdata;
-    int result = i2c_read_blocking(i2c0, address, &rxdata, 1, false);
+    int result = i2c_read_blocking(i2c1, address, &rxdata, 1, false);
     bool online = result >= 0;
 
     printf("I2C address 0x%02X presence=%u\r\n", address, online ? 1 : 0);
@@ -283,7 +283,17 @@ void slave_app_init(void)
     gpio_set_function((uint)I2C_SCL_GPIO, GPIO_FUNC_I2C);
     gpio_pull_up(I2C_SDA_GPIO);
     gpio_pull_up(I2C_SCL_GPIO);
-    i2c_init(i2c0, 100 * 1000);
+    i2c_init(i2c1, 100 * 1000);
+
+    printf("\r\n--- Escaneando bus I2C ---\r\n");
+    for (uint8_t addr = 0; addr < 128; addr++) {
+        uint8_t rxdata;
+        int ret = i2c_read_blocking(i2c1, addr, &rxdata, 1, false);
+        if (ret >= 0) {
+            printf("Dispositivo I2C encontrado en la direccion: 0x%02X\r\n", addr);
+        }
+    }
+    printf("--- Fin escaneo I2C ---\r\n\r\n");
 
     adc_init();
     adc_gpio_init(ADC0_GPIO);
