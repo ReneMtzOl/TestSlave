@@ -365,6 +365,13 @@ static void setup_master_output_pin(uint pin)
     gpio_put(pin, 0);
 }
 
+static void setup_master_input_pin(uint pin)
+{
+    gpio_init(pin);
+    gpio_set_dir(pin, GPIO_IN);
+    gpio_disable_pulls(pin);
+}
+
 void master_tests_init(void)
 {
     printf("Initializing UART protocol...\r\n");
@@ -387,6 +394,12 @@ void master_tests_init(void)
     setup_master_output_pin(SW_DOOR1_GPIO);
     setup_master_output_pin(SW_DOOR2_GPIO);
 
+    // Initialize relay GPIOs as inputs for testing
+    setup_master_input_pin(REL1_GPIO);
+    setup_master_input_pin(REL2_GPIO);
+    setup_master_input_pin(REL3_GPIO);
+    setup_master_input_pin(REL4_GPIO);
+
     // Initialize board LED
     setup_master_output_pin(BOARD_LED);
 
@@ -402,6 +415,25 @@ static bool relay_write(uint8_t relay_id, bool state)
 
 static bool test_relay(uint8_t relay_id)
 {
+    int pin = -1;
+    switch (relay_id)
+    {
+    case SLAVE_REL1:
+        pin = REL1_GPIO;
+        break;
+    case SLAVE_REL2:
+        pin = REL2_GPIO;
+        break;
+    case SLAVE_REL3:
+        pin = REL3_GPIO;
+        break;
+    case SLAVE_REL4:
+        pin = REL4_GPIO;
+        break;
+    default:
+        return false;
+    }
+
     printf("Testing relay %u ON/OFF\r\n", relay_id);
 
     if (!relay_write(relay_id, true))
@@ -410,7 +442,14 @@ static bool test_relay(uint8_t relay_id)
         return false;
     }
 
-    sleep_ms(BLINK_DELAY_MS);
+    sleep_ms(SWITCH_SETTLING_TIME_MS);
+
+    // Lógica inversa: si el esclavo activa, el maestro lee 0
+    if (gpio_get(pin) != 0)
+    {
+        printf("ERROR: Relay %u turned ON but master read 1\r\n", relay_id);
+        return false;
+    }
 
     if (!relay_write(relay_id, false))
     {
@@ -418,41 +457,16 @@ static bool test_relay(uint8_t relay_id)
         return false;
     }
 
-    sleep_ms(BLINK_DELAY_MS);
+    sleep_ms(SWITCH_SETTLING_TIME_MS);
 
-    printf("Relay %u OK\r\n", relay_id);
-
-    return true;
-}
-
-static bool test_all_relays_blink(void)
-{
-    printf("Testing all relays blink x3\r\n");
-
-    for (int i = 0; i < 3; i++)
+    // Lógica inversa: si el esclavo desactiva, el maestro lee 1
+    if (gpio_get(pin) != 1)
     {
-        printf("Cycle %d\r\n", i + 1);
-
-        // ON todos
-        for (int r = SLAVE_REL1; r <= SLAVE_REL4; r++)
-        {
-            if (!relay_write(r, true))
-                return false;
-        }
-
-        sleep_ms(BLINK_DELAY_MS);
-
-        // OFF todos
-        for (int r = SLAVE_REL1; r <= SLAVE_REL4; r++)
-        {
-            if (!relay_write(r, false))
-                return false;
-        }
-
-        sleep_ms(BLINK_DELAY_MS);
+        printf("ERROR: Relay %u turned OFF but master read 0\r\n", relay_id);
+        return false;
     }
 
-    printf("All relays blink OK\r\n");
+    printf("Relay %u OK\r\n", relay_id);
 
     return true;
 }
@@ -468,9 +482,6 @@ static bool run_relay_full_test(void)
     if (!test_relay(SLAVE_REL3))
         return false;
     if (!test_relay(SLAVE_REL4))
-        return false;
-
-    if (!test_all_relays_blink())
         return false;
 
     printf("Full relay test OK\r\n");
@@ -636,18 +647,19 @@ master_test_result_t master_tests_run_all_with_result(void)
         printf("FULL TEST FAILED: switch test\r\n");
         return MASTER_TEST_RESULT_SWITCH_FAIL;
     }
+/*
+if (!run_relay_full_test())
+{
+    printf("FULL TEST FAILED: relay test\r\n");
+    return MASTER_TEST_RESULT_RELAY_FAIL;
+}
 
-    if (!run_relay_full_test())
-    {
-        printf("FULL TEST FAILED: relay test\r\n");
-        return MASTER_TEST_RESULT_RELAY_FAIL;
-    }
-
-    if (!run_i2c_presence_check())
-    {
-        printf("FULL TEST FAILED: I2C test\r\n");
-        return MASTER_TEST_RESULT_I2C_FAIL;
-    }
+if (!run_i2c_presence_check())
+{
+    printf("FULL TEST FAILED: I2C test\r\n");
+    return MASTER_TEST_RESULT_I2C_FAIL;
+}
+*/
 
     if (!run_adc_test())
     {

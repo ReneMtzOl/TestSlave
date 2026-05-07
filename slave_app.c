@@ -123,8 +123,10 @@ static void send_error(uint8_t id, uint16_t error_code)
 
 static void handle_check_i2c_address(uint8_t address)
 {
-    // A zero-length write is used as a lightweight presence probe.
-    int result = i2c_write_blocking(i2c0, address, NULL, 0, false);
+    // En el SDK de Raspberry Pi Pico, una escritura de 0 bytes puede retornar 0 sin generar tráfico.
+    // La forma estándar y confiable de hacer un "probe" es intentar leer 1 byte.
+    uint8_t rxdata;
+    int result = i2c_read_blocking(i2c0, address, &rxdata, 1, false);
     bool online = result >= 0;
 
     printf("I2C address 0x%02X presence=%u\r\n", address, online ? 1 : 0);

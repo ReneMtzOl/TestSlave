@@ -27,12 +27,12 @@ typedef enum
 
 // Expected slave ADC ranges for the generic ADC test.
 // A grounded ADC input should fail because its value is below the minimum.
-#define SLAVE_ADC0_MIN_EXPECTED 1
-#define SLAVE_ADC0_MAX_EXPECTED 4095
-#define SLAVE_ADC1_MIN_EXPECTED 1
-#define SLAVE_ADC1_MAX_EXPECTED 4095
-#define SLAVE_ADC2_MIN_EXPECTED 1
-#define SLAVE_ADC2_MAX_EXPECTED 4095
+#define SLAVE_ADC0_MIN_EXPECTED 1843
+#define SLAVE_ADC0_MAX_EXPECTED 2253
+#define SLAVE_ADC1_MIN_EXPECTED 1843
+#define SLAVE_ADC1_MAX_EXPECTED 2253
+#define SLAVE_ADC2_MIN_EXPECTED 1843
+#define SLAVE_ADC2_MAX_EXPECTED 2253
 
 // ------------------------------------------------------------
 // Slave logical pin IDs.
