@@ -47,7 +47,7 @@ int main(void)
         printf("Master tester configuring pins...\r\n");
         master_tests_init();
 
-        sleep_ms(3000);
+        sleep_ms(1000);
         printf("Master tester started\r\n");
 
         master_test_result_t result = master_tests_run_all_with_result();
@@ -76,7 +76,7 @@ int main(void)
         printf("Slave configuring pins...\r\n");
         slave_app_init();
 
-        sleep_ms(1000);
+        sleep_ms(500);
         printf("Slave started\r\n");
 
         while (true)

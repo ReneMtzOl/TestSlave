@@ -144,11 +144,11 @@ static bool run_relay_test(void)
     {
         if (!relay_write(r, true))
             return false;
-        sleep_ms(300);
+        sleep_ms(30);
 
         if (!relay_write(r, false))
             return false;
-        sleep_ms(300);
+        sleep_ms(30);
     }
 
     printf("Relay test OK\r\n");
@@ -436,7 +436,6 @@ static bool test_relay(uint8_t relay_id)
     }
 
     printf("Testing relay %u ON/OFF\r\n", relay_id);
-    printf("  [Master] Pin state before ON: %d [PIN=%d]\r\n", gpio_get(pin),pin);
 
     if (!relay_write(relay_id, true))
     {
@@ -444,10 +443,9 @@ static bool test_relay(uint8_t relay_id)
         return false;
     }
 
-    sleep_ms(500);
+    sleep_ms(30);
 
     int state_on = gpio_get(pin);
-    printf("  [Master] Pin state after ON: %d\r\n", state_on);
 
     // Lógica inversa: si el esclavo activa, el maestro lee 0
     if (state_on != 0)
@@ -462,10 +460,9 @@ static bool test_relay(uint8_t relay_id)
         return false;
     }
 
-    sleep_ms(500);
+    sleep_ms(30);
 
     int state_off = gpio_get(pin);
-    printf("  [Master] Pin state after OFF: %d\r\n", state_off);
 
     // Lógica inversa: si el esclavo desactiva, el maestro lee 1
     if (state_off != 1)
@@ -757,15 +754,15 @@ static bool run_pwm_adc_test(void)
     uint16_t pwm2_adc_value = read_master_adc_average(MASTER_PWM_ADC1_ID, 16);
 
     if (!validate_adc_range("PWM1 on master ADC0", pwm1_adc_value,
-                            PWM1_ADC_MIN_PLACEHOLDER,
-                            PWM1_ADC_MAX_PLACEHOLDER))
+                            PWM1_ADC_MIN_EXPECTED,
+                            PWM1_ADC_MAX_EXPECTED))
     {
         return false;
     }
 
     if (!validate_adc_range("PWM2 on master ADC1", pwm2_adc_value,
-                            PWM2_ADC_MIN_PLACEHOLDER,
-                            PWM2_ADC_MAX_PLACEHOLDER))
+                            PWM2_ADC_MIN_EXPECTED,
+                            PWM2_ADC_MAX_EXPECTED))
     {
         return false;
     }

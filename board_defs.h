@@ -19,11 +19,11 @@ typedef enum
 #define MASTER_PWM_ADC0_ID 0
 #define MASTER_PWM_ADC1_ID 1
 
-// Placeholder mientras defines rangos reales.
-#define PWM1_ADC_MIN_PLACEHOLDER 1
-#define PWM1_ADC_MAX_PLACEHOLDER 4095
-#define PWM2_ADC_MIN_PLACEHOLDER 1
-#define PWM2_ADC_MAX_PLACEHOLDER 4095
+// Expected ranges for the PWM test (+/- 5% tolerance)
+#define PWM1_ADC_MIN_EXPECTED 1023
+#define PWM1_ADC_MAX_EXPECTED 1433
+#define PWM2_ADC_MIN_EXPECTED 3276
+#define PWM2_ADC_MAX_EXPECTED 3685
 
 // Expected slave ADC ranges for the generic ADC test.
 // A grounded ADC input should fail because its value is below the minimum.
