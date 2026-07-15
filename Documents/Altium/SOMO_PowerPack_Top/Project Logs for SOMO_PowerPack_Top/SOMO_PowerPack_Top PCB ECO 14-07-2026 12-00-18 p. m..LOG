@@ -1,0 +1,18 @@
+Added Component: Designator=J4(HDRV8W40P0X127_1X8_1016X210X400P)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://content.harwin.com/m/b82244d701975b38/original/DRG-02646-Technical-Drawing-Datasheet-M50-353-pdf.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "4mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Harwin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "M50-3530842"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "855-M50-3530842"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Harwin/M50-3530842?qs=%252BdQmOuGyFcHKRmyiVqsSSw%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=RELAY6 Pin=J4-1
+Added Pin To Net: NetName=RELAY5 Pin=J4-2
+Added Pin To Net: NetName=RELAY4 Pin=J4-3
+Added Pin To Net: NetName=GND Pin=J4-4
+Added Pin To Net: NetName=RELAY3 Pin=J4-5
+Added Pin To Net: NetName=RELAY2 Pin=J4-6
+Added Pin To Net: NetName=RELAY1 Pin=J4-7
+Added Pin To Net: NetName=GND Pin=J4-8
+Added Member To Class: ClassName=[0]Top Member=Component J4 M50-3530842

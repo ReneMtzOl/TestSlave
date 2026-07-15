@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=C5_UART_TX Pin=J1-1
+Added Pin To Net: NetName=C5_UART_RX Pin=J1-2
+Added Pin To Net: NetName=C5_BOOT0 Pin=J1-3
+Added Pin To Net: NetName=C5_EN Pin=J1-4
+Change Net Name : Old Net Name=C5_BOOT0 New Net Name=C5_BOOT

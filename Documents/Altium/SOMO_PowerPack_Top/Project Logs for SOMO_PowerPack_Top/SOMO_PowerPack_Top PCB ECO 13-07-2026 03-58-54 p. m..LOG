@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=SX1262_BUSY Pin=U5-18
+Added Component: Designator=Q?(DMN67D7L13)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/dmn67d7l-13/diodes-incorporated?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.diodes.com/assets/Package-Files/SOT23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.1mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Diodes Incorporated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "621-DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/DMN67D7L-13?qs=W0yvOO0ixfHR5TrLcSFuNw%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=SX1262_BUSY Pin=Q?-1
+Added Pin To Net: NetName=GND Pin=Q?-2
+Added Pin To Net: NetName=SX1262_BUSY Pin=Q?-3
+Add Net: Net with name "SX1262_BUSY" already exists
+Added Member To Class: ClassName=U_SX1262_Radio Member=Component Q? DMN67D7L-13

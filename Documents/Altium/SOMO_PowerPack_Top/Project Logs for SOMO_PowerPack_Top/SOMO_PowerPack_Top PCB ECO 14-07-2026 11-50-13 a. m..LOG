@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=+3.3V Pin=C22-1
+Removed Pin From Net: NetName=GND Pin=C22-2
+Removed Pin From Net: NetName=S3_SDA Pin=U7-1
+Removed Pin From Net: NetName=S3_SCL Pin=U7-2
+Removed Pin From Net: NetName=+3.3V Pin=U7-3
+Removed Pin From Net: NetName=GND Pin=U7-4
+Added Component: Designator=J?(HDRV5W40P0X127_1X5_635X210X400P)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://content.harwin.com/m/b82244d701975b38/original/DRG-02646-Technical-Drawing-Datasheet-M50-353-pdf.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "4mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Harwin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "M50-3530542"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "855-M50-3530542"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Harwin/M50-3530542?qs=%252BdQmOuGyFcHDSISYjHIhxg%3D%3D"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+24V Pin=J?-1
+Added Pin To Net: NetName=GND Pin=J?-2
+Added Pin To Net: NetName=+5V Pin=J?-3
+Added Pin To Net: NetName=GND Pin=J?-4
+Added Pin To Net: NetName=+3.3V Pin=J?-5
+Added Member To Class: ClassName=[0]Top Member=Component J? M50-3530542

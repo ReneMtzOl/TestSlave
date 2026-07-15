@@ -1,0 +1,251 @@
+Add component: Footprint Not Found SMD-0603C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0603C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Add component: Footprint Not Found SMD-0402C
+Added Component: Designator=J7(DF12NB3030DP05V51)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.hirose.com/en/product/document?clcode=CL0537-0389-0-51&productname=DF12NB(3.0)-30DP-0.5V(51)&series=DF12N&documenttype=2DDrawing&lang=en&documentid=0001367354"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "2.5mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Hirose"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "DF12NB(3.0)-30DP-0.5V(51)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "798-DF12NB3030DP0551"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Hirose-Connector/DF12NB3.0-30DP-0.5V51?qs=DPoM0jnrROVGT6JTbeYOKw%3D%3D"; VariantName = "[No Variations]"
+Added Component: Designator=J?(TC2050-IDC)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets_SAMA/8a7b9a42a753a5cbaca4256ee093e59c.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Tag Connect"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "TC2050-IDC-430"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Q1(DMN67D7L13)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/dmn67d7l-13/diodes-incorporated?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.diodes.com/assets/Package-Files/SOT23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.1mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Diodes Incorporated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "621-DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/DMN67D7L-13?qs=W0yvOO0ixfHR5TrLcSFuNw%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Added Component: Designator=Q2(DMN67D7L13)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/dmn67d7l-13/diodes-incorporated?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.diodes.com/assets/Package-Files/SOT23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.1mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Diodes Incorporated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "621-DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/DMN67D7L-13?qs=W0yvOO0ixfHR5TrLcSFuNw%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Added Component: Designator=Q?(DMN67D7L13)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = "https://www.arrow.com/en/products/dmn67d7l-13/diodes-incorporated?region=nac"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.diodes.com/assets/Package-Files/SOT23.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "1.1mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Diodes Incorporated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "621-DMN67D7L-13"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/DMN67D7L-13?qs=W0yvOO0ixfHR5TrLcSFuNw%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "DMN67D7L-13"; VariantName = "[No Variations]"
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SMD-0402-RES
+Add component: Footprint Not Found SKRKAEE020
+Add component: Footprint Not Found SKRKAEE020
+Add component: Footprint Not Found SKRKAEE020
+Add component: Footprint Not Found SKRKAEE020
+Add component: Footprint Not Found ESP32C5WROOM1UN8R8
+Added Component: Designator=U6(ESP32S3WROOM1UN16R8)
+Add component (AddParameter): Name = "Arrow Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Arrow Price/Stock"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Link"; Value = "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Height"; Value = "3.35mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Name"; Value = "Espressif Systems"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer_Part_Number"; Value = "ESP32-S3-WROOM-1U-N16R8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Part Number"; Value = "356-ESP32S3WM1UN16R8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mouser Price/Stock"; Value = "https://www.mouser.co.uk/ProductDetail/Espressif-Systems/ESP32-S3-WROOM-1U-N16R8?qs=Li%252BoUPsLEns6V0Pr5KRJtw%3D%3D"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "ESP32-S3-WROOM-1U-N16R8"; VariantName = "[No Variations]"
+Add component: Footprint Not Found 114993390
+Add component: Footprint Not Found QFN65P600X600X100-29N-D
+Add component: Footprint Not Found QFN65P600X600X100-29N-D
+Added Pin To Net: NetName=+3.3V Pin=J7-10
+Added Pin To Net: NetName=+3.3V Pin=J7-12
+Added Pin To Net: NetName=+3.3V Pin=U6-2
+Added Net: Name=+3.3V
+Added Pin To Net: NetName=+5V Pin=J7-2
+Added Pin To Net: NetName=+5V Pin=J7-4
+Added Pin To Net: NetName=+5V Pin=J?-5
+Added Net: Name=+5V
+Added Pin To Net: NetName=+24V Pin=J7-1
+Added Pin To Net: NetName=+24V Pin=J7-3
+Added Net: Name=+24V
+Added Net: Name=C5_BOOT0
+Added Net: Name=C5_BOOT1
+Added Pin To Net: NetName=C5_BOOT Pin=J?-3
+Added Net: Name=C5_BOOT
+Added Net: Name=C5_C\S\
+Added Pin To Net: NetName=C5_EN Pin=J?-4
+Added Net: Name=C5_EN
+Add Net: Net with name "C5_EN" already exists
+Added Pin To Net: NetName=C5_I\R\Q\ Pin=Q?-3
+Added Net: Name=C5_I\R\Q\
+Added Pin To Net: NetName=C5_IRQ Pin=Q?-1
+Added Net: Name=C5_IRQ
+Added Pin To Net: NetName=C5_RST Pin=Q1-1
+Added Net: Name=C5_RST
+Added Pin To Net: NetName=C5_UART_RX Pin=J?-2
+Added Net: Name=C5_UART_RX
+Add Net: Net with name "C5_UART_RX" already exists
+Added Net: Name=C5_UART_TX
+Add Net: Net with name "C5_UART_TX" already exists
+Added Pin To Net: NetName=CAN_RX Pin=U6-17
+Added Net: Name=CAN_RX
+Added Pin To Net: NetName=CAN_TX Pin=U6-18
+Added Net: Name=CAN_TX
+Added Pin To Net: NetName=Clamp_1 Pin=U6-39
+Added Net: Name=Clamp_1
+Added Pin To Net: NetName=EUART_RX Pin=J7-26
+Added Pin To Net: NetName=EUART_RX Pin=U6-9
+Added Net: Name=EUART_RX
+Added Pin To Net: NetName=EUART_TX Pin=J7-22
+Added Pin To Net: NetName=EUART_TX Pin=U6-8
+Added Net: Name=EUART_TX
+Added Pin To Net: NetName=GND Pin=J7-5
+Added Pin To Net: NetName=GND Pin=J7-6
+Added Pin To Net: NetName=GND Pin=J7-7
+Added Pin To Net: NetName=GND Pin=J7-8
+Added Pin To Net: NetName=GND Pin=J7-14
+Added Pin To Net: NetName=GND Pin=J7-16
+Added Pin To Net: NetName=GND Pin=J7-21
+Added Pin To Net: NetName=GND Pin=J7-24
+Added Pin To Net: NetName=GND Pin=J7-MP1
+Added Pin To Net: NetName=GND Pin=J7-MP2
+Added Pin To Net: NetName=GND Pin=J?-6
+Added Pin To Net: NetName=GND Pin=Q1-2
+Added Pin To Net: NetName=GND Pin=Q2-2
+Added Pin To Net: NetName=GND Pin=Q?-2
+Added Pin To Net: NetName=GND Pin=U6-1
+Added Pin To Net: NetName=GND Pin=U6-40
+Added Pin To Net: NetName=GND Pin=U6-41
+Added Pin To Net: NetName=GND Pin=U6-42
+Added Pin To Net: NetName=GND Pin=U6-43
+Added Pin To Net: NetName=GND Pin=U6-44
+Added Pin To Net: NetName=GND Pin=U6-45
+Added Pin To Net: NetName=GND Pin=U6-46
+Added Pin To Net: NetName=GND Pin=U6-47
+Added Pin To Net: NetName=GND Pin=U6-48
+Added Pin To Net: NetName=GND Pin=U6-49
+Added Net: Name=GND
+Added Net: Name=GPIO1_R\S\T\
+Added Net: Name=GPIO2_R\S\T\
+Added Pin To Net: NetName=GPIO_INTA Pin=U6-22
+Added Net: Name=GPIO_INTA
+Added Pin To Net: NetName=LCD_BL Pin=J7-19
+Added Net: Name=LCD_BL
+Added Pin To Net: NetName=LCD_C\S\ Pin=J7-15
+Added Net: Name=LCD_C\S\
+Added Pin To Net: NetName=LCD_D/C Pin=J7-13
+Added Net: Name=LCD_D/C
+Added Pin To Net: NetName=LCD_MOSI Pin=J7-9
+Added Pin To Net: NetName=LCD_MOSI Pin=U6-10
+Added Net: Name=LCD_MOSI
+Added Pin To Net: NetName=LCD_R\S\T\ Pin=J7-17
+Added Net: Name=LCD_R\S\T\
+Added Pin To Net: NetName=LCD_SCK Pin=J7-11
+Added Pin To Net: NetName=LCD_SCK Pin=U6-11
+Added Net: Name=LCD_SCK
+Added Pin To Net: NetName=MODBUS_D Pin=U6-20
+Added Net: Name=MODBUS_D
+Added Net: Name=MODBUS_DE
+Added Pin To Net: NetName=MODBUS_R Pin=U6-19
+Added Net: Name=MODBUS_R
+Added Net: Name=NetR14_1
+Added Net: Name=NetU5_12
+Added Pin To Net: NetName=NetU6_25 Pin=U6-25
+Added Net: Name=NetU6_25
+Added Net: Name=NetU18_17
+Added Pin To Net: NetName=Pow_Alert Pin=U6-21
+Added Net: Name=Pow_Alert
+Added Net: Name=RELAY1
+Added Net: Name=RELAY2
+Added Net: Name=RELAY3
+Added Net: Name=RELAY4
+Added Net: Name=RELAY5
+Added Net: Name=RELAY6
+Added Pin To Net: NetName=RTC_INT Pin=U6-12
+Added Net: Name=RTC_INT
+Added Pin To Net: NetName=S3_BOOT Pin=J?-8
+Added Pin To Net: NetName=S3_BOOT Pin=U6-27
+Added Net: Name=S3_BOOT
+Added Pin To Net: NetName=S3_EN Pin=J?-7
+Added Pin To Net: NetName=S3_EN Pin=Q2-3
+Added Pin To Net: NetName=S3_EN Pin=U6-3
+Added Net: Name=S3_EN
+Added Pin To Net: NetName=S3_MISO Pin=U6-31
+Added Net: Name=S3_MISO
+Added Pin To Net: NetName=S3_MOSI Pin=U6-32
+Added Net: Name=S3_MOSI
+Added Pin To Net: NetName=S3_RST Pin=Q2-1
+Added Net: Name=S3_RST
+Added Pin To Net: NetName=S3_SCK Pin=U6-33
+Added Net: Name=S3_SCK
+Added Pin To Net: NetName=S3_SCL Pin=U6-34
+Added Net: Name=S3_SCL
+Added Pin To Net: NetName=S3_SDA Pin=U6-35
+Added Net: Name=S3_SDA
+Added Pin To Net: NetName=S3_UART_RX Pin=J?-9
+Added Pin To Net: NetName=S3_UART_RX Pin=U6-36
+Added Net: Name=S3_UART_RX
+Added Pin To Net: NetName=S3_UART_TX Pin=J?-10
+Added Pin To Net: NetName=S3_UART_TX Pin=U6-37
+Added Net: Name=S3_UART_TX
+Added Net: Name=SX1262_BUSY
+Added Net: Name=SX1262_C\S\
+Added Pin To Net: NetName=SX1262_I\R\Q\ Pin=U6-7
+Added Net: Name=SX1262_I\R\Q\
+Added Net: Name=SX1262_R\S\T\
+Added Net: Name=SX1262_RFSW
+Added Pin To Net: NetName=Touch_I\R\Q\ Pin=J7-29
+Added Pin To Net: NetName=Touch_I\R\Q\ Pin=U6-6
+Added Net: Name=Touch_I\R\Q\
+Added Pin To Net: NetName=Touch_R\S\T\ Pin=J7-23
+Added Net: Name=Touch_R\S\T\
+Added Pin To Net: NetName=Touch_SCL Pin=J7-27
+Added Pin To Net: NetName=Touch_SCL Pin=U6-5
+Added Net: Name=Touch_SCL
+Added Pin To Net: NetName=Touch_SDA Pin=J7-25
+Added Pin To Net: NetName=Touch_SDA Pin=U6-4
+Added Net: Name=Touch_SDA
+Added Pin To Net: NetName=WS2812B_D Pin=U6-38
+Added Net: Name=WS2812B_D
+Added Class: Name=[0]Top
+Added Class: Name=U_ESP32_C5
+Added Class: Name=U_ESP32_S3
+Added Class: Name=U_ExpansionBoard
+Added Class: Name=U_GPIO_Expander2
+Added Class: Name=U_GPIO_Expander
+Added Class: Name=U_SX1262_Radio
+Added Rule: Name=Schematic Supply Nets
+Added Rule: Name=Schematic Supply Nets_1
+Added Rule: Name=Schematic Supply Nets_2
+Added Rule: Name=Schematic Supply Nets_3
